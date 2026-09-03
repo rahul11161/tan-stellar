@@ -6,7 +6,7 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const ServicePage = () => {
   const services = [
-    { title: "Business Strategy", icon: <Cast />, desc: "I throw myself down among the tall grass by the stream as I lie close to the earth." },
+    { title: "Business Strategy 123", icon: <Cast />, desc: "I throw myself down among the tall grass by the stream as I lie close to the earth." },
     { title: "Website Development", icon: <Layers />, desc: "I throw myself down among the tall grass by the stream as I lie close to the earth." },
     { title: "Marketing & Reporting", icon: <Users />, desc: "I throw myself down among the tall grass by the stream as I lie close to the earth." },
     { title: "Mobile App Development", icon: <Monitor />, desc: "I throw myself down among the tall grass by the stream as I lie close to the earth." },
