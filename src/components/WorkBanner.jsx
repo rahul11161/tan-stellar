@@ -14,7 +14,7 @@ const WorkBanner = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="absolute inset-0 md:inset-auto md:top-20 md:left-20 w-full md:w-[600px] h-full md:h-[450px] bg-[#222023]/90 backdrop-blur-sm p-12 md:p-20 flex flex-col justify-center rounded-none md:rounded-2xl"
+          className="work-banner-copy absolute inset-0 md:inset-auto md:top-20 md:left-20 w-full md:w-[600px] h-full md:h-[450px] backdrop-blur-sm p-12 md:p-20 flex flex-col justify-center rounded-none md:rounded-2xl"
         >
           <h2 className="text-[#f9004d] text-4xl md:text-5xl font-bold mb-8">
             Find Your Work Now

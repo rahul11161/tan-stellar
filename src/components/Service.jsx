@@ -1,74 +1,74 @@
 import { motion } from "framer-motion";
-import { Cast, Layers, Users, Monitor } from "lucide-react"; // Matching icons
+import { ArrowUpRight, Blocks, Code2, Headset, Smartphone, Store } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Service = () => {
-  const services = [
-    { 
-      title: "Business Strategy", 
-      desc: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <Cast className="w-10 h-10" />
-    },
-    { 
-      title: "Website Development", 
-      desc: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <Layers className="w-10 h-10" />
-    },
-    { 
-      title: "Marketing & Reporting", 
-      desc: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <Users className="w-10 h-10" />
-    },
-    { 
-      title: "Mobile App Development", 
-      desc: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <Monitor className="w-10 h-10" />
-    }
-  ];
+const services = [
+  {
+    id: "ecommerce",
+    title: "E-commerce Development & Adobe Commerce Solutions",
+    desc: "Build, customize, improve, and maintain an online store around your catalog, operations, and customer needs.",
+    icon: Store,
+    featured: true,
+  },
+  {
+    id: "website",
+    title: "Website Development",
+    desc: "Create or modernize a responsive website that strengthens credibility and makes it easier for customers to take the next step.",
+    icon: Code2,
+  },
+  {
+    id: "mobile",
+    title: "Mobile Application Development",
+    desc: "Plan and build customer-facing applications connected to the services and data your product depends on.",
+    icon: Smartphone,
+  },
+  {
+    id: "software",
+    title: "Custom Software, API Integration & Technical Support",
+    desc: "Connect systems and shape internal tools around business-specific workflows, with ongoing technical help when needed.",
+    icon: Blocks,
+  },
+];
+
+const ServiceCard = ({ service, index }) => {
+  const Icon = service.icon;
 
   return (
-    <section className="py-24 px-10 md:px-20 bg-[#f8f9fc]">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
-        
-        {/* Left Side: Header Content */}
-        <div className="lg:w-1/3">
-          <h2 className="text-6xl font-bold text-[#1f1f1f] mb-8">Services</h2>
-          <p className="text-gray-500 text-lg leading-relaxed mb-10">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-          </p>
-          <a href="#" className="text-[#1f1f1f] font-bold border-b-2 border-[#f9004d] pb-1 hover:text-[#f9004d] transition-colors">
-            Request Custom Service
-          </a>
+    <motion.article
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      viewport={{ once: true, amount: 0.15 }}
+      className={`service-card ${service.featured ? "service-card-featured" : ""}`}
+    >
+      <span className="service-icon"><Icon size={22} strokeWidth={1.7} aria-hidden="true" /></span>
+      {service.featured && <span className="service-specialty">CORE SPECIALTY</span>}
+      <h3>{service.title}</h3>
+      <p>{service.desc}</p>
+      <Link to={`/service#${service.id}`} className="text-link" aria-label={`Learn more about ${service.title}`}>
+        Explore service <ArrowUpRight size={15} aria-hidden="true" />
+      </Link>
+    </motion.article>
+  );
+};
+
+const Service = () => {
+  return (
+    <section id="services" className="section-shell section-services px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="section-heading mb-12 max-w-2xl">
+          <p className="eyebrow">SERVICE OVERVIEW</p>
+          <h2>End-to-End Development Services</h2>
+          <p>Explore the capabilities we bring together to build, connect, and support useful digital products for your business.</p>
         </div>
-
-        {/* Right Side: 2x2 Grid */}
-        <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {services.map((item, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-12 rounded-lg transition-all duration-500 bg-transparent hover:bg-gradient-to-br hover:from-[#f9004d] hover:to-[#ff4b2b] group cursor-pointer hover:shadow-2xl hover:-translate-y-1"
-            >
-              {/* Icon */}
-              <div className="text-[#f9004d] group-hover:text-white mb-6 transition-colors duration-300">
-                {item.icon}
-              </div>
-
-              {/* Title */}
-              <h3 className="text-2xl font-bold mb-4 text-[#1f1f1f] group-hover:text-white transition-colors duration-300">
-                {item.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-500 group-hover:text-white/90 leading-relaxed transition-colors duration-300">
-                {item.desc}
-              </p>
-            </motion.div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
-
+        <p className="service-support mt-7 flex items-center gap-2 text-sm text-slate-400">
+          <Headset size={16} aria-hidden="true" /> Need something more specific? <Link to="/contact" className="text-cyan-200 underline decoration-cyan-200/40 underline-offset-4 hover:text-white">Let&apos;s talk</Link>
+        </p>
       </div>
     </section>
   );

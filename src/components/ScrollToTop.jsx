@@ -2,12 +2,21 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // This tells the browser to snap to the top-left (0,0)
-    window.scrollTo(0, 0);
-  }, [pathname]); // This runs every time the URL path changes
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (target) {
+      target.scrollIntoView({ block: "start" });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
 
   return null;
 };

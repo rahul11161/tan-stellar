@@ -9,7 +9,7 @@ const Breadcrumb = ({ title }) => {
   const breadcrumbText = pathName.length > 0 ? pathName[0].charAt(0).toUpperCase() + pathName[0].slice(1) : "";
 
   return (
-    <section className="relative h-[450px] flex items-center justify-center bg-[#191919] overflow-hidden">
+    <section className="breadcrumb-hero relative h-[450px] flex items-center justify-center overflow-hidden">
       {/* Background Decorative Element (Trydo style) */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[60%] bg-[#f9004d] blur-[150px] rounded-full animate-pulse"></div>
