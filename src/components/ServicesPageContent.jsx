@@ -14,6 +14,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { contactHref } from "../data/contactOptions";
 import Footer from "./Footer";
 import Process from "./Process";
 import Service from "./Service";
@@ -75,6 +76,7 @@ const otherServices = [
     id: "website",
     number: "01",
     title: "Website Development",
+    contactService: "Website / Web Application Development",
     description: "Build or modernize a website that explains what you do, reflects your brand, and makes the next step clear to prospective customers.",
     icon: Globe,
     capabilities: ["Business and corporate sites", "Responsive marketing pages", "CMS and content management", "Redesigns and third-party integrations", "Performance, accessibility, and SEO fundamentals"],
@@ -85,6 +87,7 @@ const otherServices = [
     id: "mobile",
     number: "02",
     title: "Mobile Application Development",
+    contactService: "Mobile App Development",
     description: "Create mobile experiences that put useful services within reach, with the platform approach agreed around your users and requirements.",
     icon: Smartphone,
     capabilities: ["Android and iOS project planning", "Customer-facing applications", "Booking and appointment flows", "API-connected features and account access", "Push notifications and supported third-party integrations", "Testing, maintenance, and enhancements"],
@@ -95,6 +98,7 @@ const otherServices = [
     id: "software",
     number: "03",
     title: "Custom Software Development",
+    contactService: "Custom Software Development",
     description: "Shape practical internal tools around the workflows, information, and decisions that are specific to your business.",
     icon: Blocks,
     capabilities: ["Business dashboards and admin panels", "Workflow automation and custom applications", "Data management and reporting interfaces", "Integration with existing systems", "Ongoing feature and maintenance work"],
@@ -105,6 +109,7 @@ const otherServices = [
     id: "api-support",
     number: "04",
     title: "API Integration & Technical Support",
+    contactService: "API Integration",
     description: "Connect services reliably so information can move between tools without adding avoidable manual handoffs.",
     icon: Link2,
     capabilities: ["REST API development and integration", "Third-party service and business-system connections", "Authentication, data mapping, and error handling", "Integration debugging and troubleshooting", "Documentation, handover, and maintenance where supported"],
@@ -152,7 +157,7 @@ const ServicesHero = () => (
         <h1>Technology Services Designed Around Your Business.</h1>
         <p>From scalable e-commerce platforms to custom digital products, we help businesses turn complex requirements into practical, reliable technology solutions.</p>
         <div className="services-hero-actions">
-          <Link to="/contact" className="button-primary">Discuss Your Project <ArrowUpRight size={17} aria-hidden="true" /></Link>
+          <Link to={contactHref({ intent: "project" })} className="button-primary">Discuss Your Project <ArrowUpRight size={17} aria-hidden="true" /></Link>
           <a href="#expertise" className="button-secondary">Explore Our Expertise <ArrowDown size={16} aria-hidden="true" /></a>
         </div>
       </div>
@@ -208,7 +213,10 @@ const CommerceSection = () => (
             <li><Check size={16} aria-hidden="true" /> Integrations planned around real data and provider constraints</li>
             <li><Check size={16} aria-hidden="true" /> Upgrade and maintenance needs included in technical decisions</li>
           </ul>
-          <Link to="/contact" className="text-link">Discuss your commerce platform <ArrowUpRight size={16} aria-hidden="true" /></Link>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+            <Link to={contactHref({ intent: "project", service: "Magento / Adobe Commerce" })} className="text-link">Discuss Magento / Adobe Commerce <ArrowUpRight size={16} aria-hidden="true" /></Link>
+            <Link to={contactHref({ intent: "project", service: "E-commerce Development" })} className="text-link">Discuss e-commerce development <ArrowUpRight size={16} aria-hidden="true" /></Link>
+          </div>
         </div>
         <StorefrontIllustration />
       </div>
@@ -254,7 +262,14 @@ const OtherServicesSection = () => (
                 <span className="other-service-icon"><Icon size={21} aria-hidden="true" /></span>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-                <Link to="/contact" className="text-link">Discuss this service <ArrowUpRight size={15} aria-hidden="true" /></Link>
+                <Link to={contactHref({ intent: "project", service: service.contactService })} className="text-link">
+                  {service.id === "api-support" ? "Discuss API integration" : "Discuss this service"} <ArrowUpRight size={15} aria-hidden="true" />
+                </Link>
+                {service.id === "api-support" && (
+                  <Link to={contactHref({ intent: "project", service: "Technical Support / Maintenance" })} className="text-link mt-3">
+                    Discuss technical support <ArrowUpRight size={15} aria-hidden="true" />
+                  </Link>
+                )}
               </div>
               <div className="other-service-details">
                 <div className="service-detail-block">
@@ -281,7 +296,7 @@ const ServicesFaq = () => (
         <p className="eyebrow">COMMON QUESTIONS</p>
         <h2>Useful details before we begin.</h2>
         <p>Every platform and project has its own constraints. These answers outline how we approach common questions.</p>
-        <Link to="/contact" className="text-link mt-6">Talk through your requirements <ArrowUpRight size={16} aria-hidden="true" /></Link>
+        <Link to={contactHref({ intent: "project" })} className="text-link mt-6">Talk through your requirements <ArrowUpRight size={16} aria-hidden="true" /></Link>
       </div>
       <div className="service-faq-list">
         {faqs.map((faq) => (

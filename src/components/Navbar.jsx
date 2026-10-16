@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { contactHref } from "../data/contactOptions";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -27,7 +28,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <Link to="/contact" className="nav-quote">
+        <Link to={contactHref({ intent: "project" })} className="nav-quote">
           Get a Quote <ArrowUpRight size={15} aria-hidden="true" />
         </Link>
 
@@ -46,7 +47,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <Link key={item.to} to={item.to} onClick={() => setMenuOpen(false)}>{item.label}</Link>
           ))}
-          <Link to="/contact" className="mobile-quote" onClick={() => setMenuOpen(false)}>
+          <Link to={contactHref({ intent: "project" })} className="mobile-quote" onClick={() => setMenuOpen(false)}>
             Get a Quote <ArrowUpRight size={16} />
           </Link>
         </div>

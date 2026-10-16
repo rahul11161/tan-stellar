@@ -1,5 +1,6 @@
 import { ArrowUpRight, MoveUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { contactHref } from "../data/contactOptions";
 
 const Footer = ({
   ctaEyebrow = "LET'S MAKE THE NEXT THING MATTER",
@@ -15,7 +16,7 @@ const Footer = ({
           <p>{ctaDescription}</p>
         </div>
         <div className="footer-cta-actions">
-          <Link to="/contact" className="button-primary button-light">
+          <Link to={contactHref({ intent: "project" })} className="button-primary button-light">
             Start a Project <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
           <Link to="/contact" className="button-secondary button-footer-secondary">

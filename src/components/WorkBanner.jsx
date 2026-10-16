@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import bannerImg from "../assets/finding-us-01.png"; // Use the image from your screenshot
+import { contactHref } from "../data/contactOptions";
 
 const WorkBanner = () => {
   return (
@@ -16,19 +19,17 @@ const WorkBanner = () => {
           viewport={{ once: true }}
           className="work-banner-copy absolute inset-0 md:inset-auto md:top-20 md:left-20 w-full md:w-[600px] h-full md:h-[450px] backdrop-blur-sm p-12 md:p-20 flex flex-col justify-center rounded-none md:rounded-2xl"
         >
-          <h2 className="text-[#f9004d] text-4xl md:text-5xl font-bold mb-8">
-            Find Your Work Now
+          <h2 className="text-4xl font-bold text-slate-900 md:text-5xl">
+            Have a Project in Mind?
           </h2>
           
-          <p className="text-gray-300 text-lg leading-relaxed mb-12">
-            It is a long established fact that a reader will be distracted by the 
-            readable content of a page when looking at its layout. The point of 
-            using Lorem Ipsum is that.
+          <p className="mb-8 mt-5 text-lg leading-relaxed text-slate-600">
+            Tell us what you want to build, improve, or connect. We&apos;ll help you explore a practical next step.
           </p>
 
-          <button className="w-fit border border-white/40 text-white px-10 py-4 rounded-md font-bold hover:bg-[#f9004d] hover:border-[#f9004d] transition-all duration-300 uppercase tracking-widest text-sm">
-            Get Started
-          </button>
+          <Link to={contactHref({ intent: "project" })} className="button-primary w-fit">
+            Start a Project <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { contactHref } from "../data/contactOptions";
 import heroImg from "../assets/agency-hero.png";
 
 const Hero = () => {
@@ -31,7 +32,7 @@ const Hero = () => {
             From high-performing websites and e-commerce platforms to mobile applications and custom software, we help businesses turn their ideas into scalable, reliable digital products.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link to="/contact" className="button-primary">
+            <Link to={contactHref({ intent: "project" })} className="button-primary">
               Get a Free Consultation <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
             <Link to="/portfolio" className="button-secondary">

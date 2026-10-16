@@ -1,24 +1,29 @@
+import { useEffect } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import AboutSection from "../components/AboutSection";
 import Footer from "../components/Footer";
-import WorkBanner from "../components/WorkBanner";
 
 const AboutPage = () => {
-  return (
-    <main className="bg-white">
-      {/* Dynamic Breadcrumb with the black/red glow background */}
-      <Breadcrumb title="About Us" />
-     
-        {/* The White Content Section */}
-        <AboutSection />
+  useEffect(() => {
+    const previousTitle = document.title;
+    const description = document.querySelector('meta[name="description"]');
+    const previousDescription = description?.content;
 
-      <div class="mb-30">
-        {/* New Banner Section */}
-        <WorkBanner />
-      </div>
-      
-      
-      {/* Optional: You can add the FunFacts here too if you want to match the demo */}
+    document.title = "About Tan-Stellar | Web, App & Commerce Services";
+    if (description) {
+      description.content = "Learn about Tan-Stellar’s approach to web development, e-commerce, custom software, API integrations, and ongoing technical support.";
+    }
+
+    return () => {
+      document.title = previousTitle;
+      if (description && previousDescription) description.content = previousDescription;
+    };
+  }, []);
+
+  return (
+    <main className="bg-[#f3f6fb]">
+      <Breadcrumb title="About Us" />
+      <AboutSection />
       <Footer />
     </main>
   );

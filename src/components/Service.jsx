@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Blocks, Code2, Headset, Smartphone, Store } from "lucide-react";
 import { Link } from "react-router-dom";
+import { contactHref } from "../data/contactOptions";
 
 const services = [
   {
@@ -67,7 +68,7 @@ const Service = () => {
           ))}
         </div>
         <p className="service-support mt-7 flex items-center gap-2 text-sm text-slate-400">
-          <Headset size={16} aria-hidden="true" /> Need something more specific? <Link to="/contact" className="text-cyan-200 underline decoration-cyan-200/40 underline-offset-4 hover:text-white">Let&apos;s talk</Link>
+          <Headset size={16} aria-hidden="true" /> Need something more specific? <Link to={contactHref({ intent: "project" })} className="text-cyan-200 underline decoration-cyan-200/40 underline-offset-4 hover:text-white">Let&apos;s talk</Link>
         </p>
       </div>
     </section>

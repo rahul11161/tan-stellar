@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { contactHref } from "../data/contactOptions";
 import { ProjectCard } from "./ProjectCard";
 import projects from "./projectData";
 
@@ -22,7 +23,7 @@ const AllWorks = () => {
             <p>Explore selected e-commerce projects spanning Magento / Adobe Commerce and Shopify. These projects represent experience with online storefronts, product catalogs, shopping experiences, and business-focused e-commerce solutions.</p>
             <p className="portfolio-context-note">Project listings are live storefront references. Descriptions cover each site&apos;s business category and do not assert individual responsibilities, implementation details, or outcomes.</p>
             <div className="portfolio-hero-actions">
-              <Link to="/contact" className="button-primary">Discuss Your Project <ArrowUpRight size={16} aria-hidden="true" /></Link>
+              <Link to={contactHref({ intent: "project" })} className="button-primary">Discuss Your Project <ArrowUpRight size={16} aria-hidden="true" /></Link>
               <a href="#projects" className="button-secondary">Explore Projects <ArrowDown size={16} aria-hidden="true" /></a>
             </div>
           </div>
